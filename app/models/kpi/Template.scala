@@ -2,8 +2,6 @@ package models.kpi
 
 import play.api.db.slick.Config.driver.simple._
 
-case class Templates(id: Option[Long], name: String, description: String, isActive: Boolean)
-
 class Template extends Table[(Long, String, String, Boolean)]("kpiTemplate"){
   def id = column[Long]("id")
   def name = column[String]("name")
@@ -17,7 +15,7 @@ class Template extends Table[(Long, String, String, Boolean)]("kpiTemplate"){
   }
 }
 
-object Templates {
+object Template {
   def apply(id: Option[Long], name: String, description: String, isActive: Boolean) = {
     val t: Templates = new Templates
     t.id = id.getOrElse(0)
