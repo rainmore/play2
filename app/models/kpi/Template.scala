@@ -2,7 +2,7 @@ package models.kpi
 
 import play.api.db.slick.Config.driver.simple._
 
-class Template extends Table[(Long, String, String, Boolean)]("kpiTemplate"){
+class Template {
   def id = column[Long]("id")
   def name = column[String]("name")
   def description = column[String]("description")
