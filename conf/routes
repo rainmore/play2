@@ -3,8 +3,15 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.index
-GET     /db                         controllers.Application.db
+GET     /                                               controllers.Application.index
+GET     /db                                             controllers.Application.db
+GET     /kpi/template                                   controllers.Kpi.index(id: Long ?= 0)
+GET     /kpi/template/$id<[0-9]+>                       controllers.Kpi.index(id: Long)
+GET     /kpi/template/activate/$id<[0-9]+>              controllers.Kpi.activate(id: Long)
+GET     /kpi/template/copy/$id<[0-9]+>                  controllers.Kpi.copy(id: Long)
+GET     /kpi/template/edit/$id<[0-9]+>                  controllers.Kpi.edit(id: Long)
+POST    /kpi/template/savePost                          controllers.Kpi.save()
+GET     /kpi/template/delete/$id<[0-9]+>                controllers.Kpi.delete(id: Long)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

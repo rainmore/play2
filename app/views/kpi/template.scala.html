@@ -1,0 +1,20 @@
+@(form: Form[models.kpi.Template], message: String = "KPI Template")
+@import models.kpi.Template
+
+@main("KPI Template") {
+
+    @helper.form(action=routes.Kpi.save()) {
+        <input type="hidden" name="id" value="@form("id").value" />
+        @helper.inputText(form("name"))
+        @helper.textarea(form("description"))
+        @helper.checkbox(form("isActive"))
+        <dl>
+            <dt></dt>
+            <dd>
+                <input type="submit" />
+                <input type="reset" />
+            </dd>
+        </dl>
+
+    }
+}
