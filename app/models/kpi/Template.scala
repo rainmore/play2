@@ -1,13 +1,13 @@
 package models.kpi
 
-import play.api.data._
-import play.api.data.Forms._
+import play.api.db.slick.Config.driver.simple._
 
 class Template {
-  var id: Long = _
-  var name: String = _
-  var description: String = _
-  var isActive: Boolean = _
+  def id = column[Long]("id")
+  def name = column[String]("name")
+  def description = column[String]("description")
+  def isActive = column[Boolean]("isActive")
+
   var sections: List[Section] = _
 
   override def toString = {
@@ -17,7 +17,7 @@ class Template {
 
 object Template {
   def apply(id: Option[Long], name: String, description: String, isActive: Boolean) = {
-    val t: Template = new Template
+    val t: Templates = new Templates
     t.id = id.getOrElse(0)
     t.name = name
     t.description = description
@@ -25,5 +25,5 @@ object Template {
     t
   }
 
-  def unapply(t: Template) = Some((Option(t.id), t.name, t.description, t.isActive))
+  def unapply(t: Templates) = Some((Option(t.id), t.name, t.description, t.isActive))
 }
