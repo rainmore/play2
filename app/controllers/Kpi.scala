@@ -19,8 +19,7 @@ object Kpi extends Controller {
   )
 
   def index(id: Long) = Action {
-    var template: Template = null
-    if (id > 0) template = TemplateService.findById(id)
+    val template = if (id != null) TemplateService.findById(id) else null
     Ok(views.html.kpi.index("KPI List", list, template))
   }
 
